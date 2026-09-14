@@ -1,6 +1,10 @@
 package hiber.model;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import javax.persistence.*;
+
 
 @Entity
 @Table(name = "users")
@@ -11,12 +15,19 @@ public class User {
     private Long id;
 
     @Column(name = "name")
+    @NotBlank(message = "Name must not be blank")
+    @Size(max = 30, message = "Name must contain at most 30 characters")
     private String name;
 
     @Column(name = "surname")
+    @NotBlank(message = "Surname must not be blank")
+    @Size(max = 30, message = "Name must contain at most 30 characters")
     private String surname;
 
     @Column(name = "email")
+    @Email
+    @NotBlank(message = "Email must not be blank")
+    @Size(max = 250, message = "Name must contain at most 250 characters")
     private String email;
 
     public User() {

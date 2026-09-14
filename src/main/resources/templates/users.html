@@ -57,6 +57,15 @@
 
     </tr>
 
+    <p>
+        <label>Name:</label>
+        <input type="text"
+               th:field="*{name}"
+               required>
+        <span th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}"></span>
+    </p>
+
     </tbody>
 
 </table>
