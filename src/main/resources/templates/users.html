@@ -49,22 +49,18 @@
 
             |
 
-            <a th:href="@{/users/delete/{id}(id=${user.id})}">
-                Delete
-            </a>
+            <form th:action="@{/users/delete/{id}(id=${user.id})}">
+                method="post">
+
+                <button type="submit">
+                    Delete
+                </button>
+
+            </form>
 
         </td>
 
     </tr>
-
-    <p>
-        <label>Name:</label>
-        <input type="text"
-               th:field="*{name}"
-               required>
-        <span th:if="${#fields.hasErrors('name')}"
-              th:errors="*{name}"></span>
-    </p>
 
     </tbody>
 

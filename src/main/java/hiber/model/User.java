@@ -2,6 +2,7 @@ package hiber.model;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.persistence.*;
 
@@ -14,20 +15,27 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Pattern(
+            regexp = "^[\\p{L}]+$",
+            message = "Name must contain only letters")
     @Column(name = "name")
     @NotBlank(message = "Name must not be blank")
     @Size(max = 30, message = "Name must contain at most 30 characters")
     private String name;
 
+    @Pattern(
+            regexp = "^[\\p{L}]+$",
+            message = "Surname must contain only letters")
     @Column(name = "surname")
     @NotBlank(message = "Surname must not be blank")
-    @Size(max = 30, message = "Name must contain at most 30 characters")
+    @Size(max = 30, message = "Surname must contain at most 30 characters")
     private String surname;
+
 
     @Column(name = "email")
     @Email
     @NotBlank(message = "Email must not be blank")
-    @Size(max = 250, message = "Name must contain at most 250 characters")
+    @Size(max = 250, message = "Email must contain at most 250 characters")
     private String email;
 
     public User() {
